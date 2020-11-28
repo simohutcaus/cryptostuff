@@ -19,3 +19,20 @@ export const SelectableTile = styled(Tile)`
 
 `
 
+export const DeletableTile = styled(Tile)`
+
+&:hover { 
+    cursor: pointer;
+    ${redBoxShadow}
+}
+
+`
+export const DisabledTile = styled(Tile)`
+
+pointer-events: none;
+opacity: 0.4;
+
+}
+
+
+`
