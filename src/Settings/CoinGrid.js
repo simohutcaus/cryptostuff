@@ -6,7 +6,7 @@ import CoinTile from './CoinTile';
 
 export const CoinGridStyled = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   grid-gap: 15px;
   margin-top: 40px;
 `;
@@ -19,11 +19,11 @@ export default function ({topSection}) {
   return (
     <AppContext.Consumer>
       {({ coinList, favorites }) => (
-        <CoinGridStyled>
+        (<CoinGridStyled>
           {getCoinsToDisplay(coinList, topSection, favorites).map((coinKey) => (
-            <CoinTile topSection={topSection} coinKey={coinKey} />
+            <CoinTile key={coinKey} topSection={topSection} coinKey={coinKey} />
           ))}
-        </CoinGridStyled>
+        </CoinGridStyled>)
       )}
     </AppContext.Consumer>
   );
