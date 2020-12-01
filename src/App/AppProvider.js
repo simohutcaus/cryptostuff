@@ -34,6 +34,22 @@ export class AppProvider extends React.Component {
   };
 
 
+  confirmFavorites = () => {
+    console.log("Hello ");
+    this.setState({
+      firstVisit: false,
+      page: "dashboard",
+    }, () => {
+      this.fetchPrices();
+    });
+    localStorage.setItem(
+      "cryptoDash",
+      JSON.stringify({
+        favorites: this.state.favorites
+      })
+    );
+  };
+
   fetchPrices = async () => {
     if (this.state.firstVisit) return;
     let prices = await this.prices();
