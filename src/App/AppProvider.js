@@ -17,8 +17,10 @@ export class AppProvider extends React.Component {
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
       confirmFavorites: this.confirmFavorites,
+      coinList: [],
       isInFavorites: this.isInFavorites,
-      setCurrentFavorite: this.setCurrentFavorite
+      setCurrentFavorite: this.setCurrentFavorite,
+      currentFavorite: 'BTC'
     };
   }
 
@@ -29,7 +31,7 @@ export class AppProvider extends React.Component {
 
   fetchCoins = async () => {
     let coinList = (await cc.coinList()).Data;
-    this.setState({ coinList });
+    this.setState({ coinList: coinList });
     console.log(coinList);
   };
 
@@ -40,6 +42,7 @@ export class AppProvider extends React.Component {
       firstVisit: false,
       page: "dashboard",
     }, () => {
+      this.fetchCoins();
       this.fetchPrices();
     });
     localStorage.setItem(
