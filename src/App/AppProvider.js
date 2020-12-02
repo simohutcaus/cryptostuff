@@ -10,7 +10,7 @@ export class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "dashboard",
+      page: "settings",
       favorites: ["BTC", "ETH", "XMR"],
       ...this.savedSettings(),
       setPage: this.setPage,
